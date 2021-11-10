@@ -1,5 +1,6 @@
 package com.example.getdatafromactivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,16 +26,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,Profile.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            String value = bundle.getString("name");
+//        Bundle bundle = getIntent().getExtras();
+//        if(bundle != null){
+//            String value = bundle.getString("name");
+//            textView.setText(value);
+//        }
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1){
+            String value  = data.getStringExtra("name");
             textView.setText(value);
         }
-
 
     }
 }

@@ -20,7 +20,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         editText = findViewById(R.id.editsubactivity);
-        button = findViewById(R.id.MainBtn);
+        button = findViewById(R.id.gotomainactivity);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +30,8 @@ public class Profile extends AppCompatActivity {
                        String value = editText.getText().toString();
                        Intent intent = new Intent(Profile.this,MainActivity.class);
                        intent.putExtra( "name", value);
-                       startActivity(intent);
+                       setResult(1,intent);
+                       finish();
 
                }catch (Exception e){
 
